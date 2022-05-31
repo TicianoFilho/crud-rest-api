@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -35,6 +36,8 @@ public class EmployeeDAOHibernateImpl implements EmployeeDAO {
 		
 		//Execute query and get the result list
 		List<Employee> employees = theQuery.getResultList();
+		
+		System.out.println("Using native Hibernate API");
 		
 		return employees;
 	}
