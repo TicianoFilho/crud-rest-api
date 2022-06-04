@@ -12,18 +12,20 @@ import com.luv2code.spring.cruddemo.entity.Employee;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-
+	
 	private EmployeeDAO employeeDAO;
 	
-	//Using constructor Dependency injection
+	//Using constructor Dependency injection (the @Qualifier may be employeeDAOJpaImpl or EmployeeDAOHibernateImpl)
 	@Autowired
 	public EmployeeServiceImpl(@Qualifier("employeeDAOJpaImpl") EmployeeDAO employeeDAO) {
 		this.employeeDAO = employeeDAO;
+		
 	}
 	
 	@Override
 	@Transactional
-	public List<Employee> findAll() {
+	public List<Employee> findAll() { 
+		System.out.println("Not using Spring Data JPA");
 		return employeeDAO.findAll();
 	}
 

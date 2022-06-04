@@ -3,6 +3,8 @@ package com.luv2code.spring.cruddemo.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +20,10 @@ import com.luv2code.spring.cruddemo.service.EmployeeService;
 @RestController
 @RequestMapping("/api")
 public class EmployeeRestController {
-
+	
+	//If I want to use Spring Data Jpa I set the @Qualifier to EmployeeSpringDataJpaService otherwise I set to EmployeeServiceImpl
 	@Autowired
+	@Qualifier("employeeSpringDataJpaService")
 	private EmployeeService employeeService;
 	
 	//Get all employees
